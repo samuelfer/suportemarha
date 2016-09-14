@@ -1,0 +1,44 @@
+RewriteEngine On
+
+#Bloquear o arquivo .htaccess contra acesso pela URL
+<Files ~ "^\.(htaccess|htpasswd)$">
+  deny from all
+</Files>
+
+#desabilita pastas
+Options -Indexes
+
+#Comprimir arquivos do site para consumir menos banda
+<IfModule mod_deflate.c>
+  <FilesMatch "\.(js|css|jpg|png|gif|ico|php|html|htm)$">
+    <ifModule mod_filter.c>
+      SetOutputFilter DEFLATE
+      AddOutputFilterByType DEFLATE text/css text/javascript application/x-javascript text/html text/plain text/xml image/x-icon
+    </IfModule>
+  </FilesMatch>
+</IfModule>
+
+#Bloquear requisição baseado no user-agent
+SetEnvIfNoCase ^User-Agent$ .*(craftbot|download|extract|stripper|sucker|ninja|clshttp|webspider|leacher|collector|grabber|webpictures) HTTP_SAFE_BADBOT
+SetEnvIfNoCase ^User-Agent$ .*(libwww-perl|aesop_com_spiderman) HTTP_SAFE_BADBOT
+Deny from env=HTTP_SAFE_BADBOT
+
+#paginas de erro
+ErrorDocument 400 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
+ErrorDocument 401 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
+ErrorDocument 403 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
+ErrorDocument 404 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
+ErrorDocument 500 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
+
+Options +FollowSymLinks
+
+RewriteCond 	%{REQUEST_FILENAME} 	!-f
+RewriteCond 	%{REQUEST_FILENAME} 	!-d
+RewriteCond 	%{REQUEST_FILENAME} 	(.*)/([^/]+)(\?.*)?$
+RewriteCond 	%1/%2.php 				-f
+RewriteCond 	%{REQUEST_URI} 			(.*)/([^/]+)(\?.*)?$
+RewriteRule 	.* 						%1/%2.php [QSA]
+
+RewriteCond 	%{HTTP_HOST} 			!^(www\.|localhost$) [NC]
+RewriteCond 	%{HTTP_HOST} 			!^www\.
+RewriteRule 	^(.*)$ 					http://www.%{HTTP_HOST}/$1 [R=301,L]
