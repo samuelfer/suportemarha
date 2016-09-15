@@ -2,6 +2,7 @@
 //require_once "init.php";
 include_once 'menu.php';
 require_once 'Acme/Models/ClienteModel.php';
+require_once 'Acme/Classes/ValidarCampo.php';
 ?>
 
 <?php
@@ -33,7 +34,7 @@ if (isset($data['cadastrar'])) {
             }
         }else{
             echo '<h4 id="div-msg"><div class="alert alert-danger" role="alert">
-                                <div class="header">Por favor preencha os campos! </div>
+                                <div class="header">Por favor preencha o campo! </div>
                             </div></h4>';
                             
         }
@@ -77,14 +78,14 @@ if (isset($_GET['excluir']) && $_GET['excluir'] == true) {
     }
 }
 
-function fieldNotEmpty($field){
-        if (!empty($field)) {
-            echo $fields = $field;
-        }else{
-            echo '<span style="color: red;">Campo obrigatório!</span>';
-            return;
-        }
+/*function fieldNotEmpty($field){
+    if (!empty($field)) {
+        echo $fields = $field;
+    }else{
+        echo '<span style="color: red;">Campo obrigatório!</span>';
+        return;
     }
+}*/
 
 ?>
 
@@ -93,6 +94,9 @@ function fieldNotEmpty($field){
     echo (isset($mensagem) ? $mensagem : '');
 ?>
 
+<?php
+$testaCampo = new ValidarCampo;
+?>
 
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="col-md-12">
@@ -123,7 +127,7 @@ function fieldNotEmpty($field){
         <div class="form-group col-md-4">
             <label for="de_cliente">Cliente</label>
             <input type="text" class="form-control"  name="de_cliente" id="de_cliente" placeholder="Informe o nome do cliente" value="<?php if (isset($data)) echo $data['de_cliente']; ?>" >
-            <?php if (!isset($data)) {fieldNotEmpty($data['de_cliente']);}?>
+            <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['de_cliente']);}?>
       </div>
   </div>
 	  	<!--input type="submit" class="btn btn-primary" value="Cadastrar Suporte" name="SendPostForm">-->

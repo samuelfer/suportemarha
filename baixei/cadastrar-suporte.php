@@ -105,14 +105,14 @@ if (isset($_GET['excluir']) && $_GET['excluir'] == true) {
     }
 }
 
-function fieldNotEmpty($field){
-        if (!empty($field)) {
-            echo $fields = $field;
-        }else{
-            echo '<span style="color: red;">Campo obrigatório!</span>';
-            return;
-        }
+/*function fieldNotEmpty($field){
+    if (!empty($field)) {
+        echo $fields = $field;
+    }else{
+        echo '<span style="color: red;">Campo obrigatório!</span>';
+        return;
     }
+}*/
 
 ?>
 
@@ -120,7 +120,9 @@ function fieldNotEmpty($field){
     echo (isset($mensagemUpdate) ? $mensagemUpdate : '');
     echo (isset($mensagem) ? $mensagem : '');
 ?>
-
+<?php
+$testaCampo = new ValidaCampo;
+?>
 
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="col-md-12">
@@ -151,18 +153,18 @@ function fieldNotEmpty($field){
         <div class="form-group col-md-3">
             <label for="dt_cadastro">Data do cadastro</label>
             <input type="text" class="form-control"  name="dt_cadastro" id="dt_cadastro" placeholder="Informe a data do cadastro" value="" >
-            <?php if (isset($data)) {fieldNotEmpty($data['dt_cadastro']);}?>
+            <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['dt_cadastro']);}?>
       </div>
     	<div class="form-group col-md-3">
 		    <label for="nu_protocolo">Nº protocolo</label>
 		    <input type="text" class="form-control"  name="nu_protocolo" id="nome" placeholder="Informe o número do protocolo" value="<?php if (isset($data)) echo $data['nu_protocolo']; ?>" >
-            <?php if (isset($data)) {fieldNotEmpty($data['nu_protocolo']);}?>
+            <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['nu_protocolo']);}?>
 	  </div>
 
     <div class="form-group col-md-4">
         <label for="data">Data</label>
         <input type="date" class="form-control" name="dt_reclamacao" id="data" placeholder="Informe a data" value="<?php if (isset($data)) echo $data['dt_reclamacao']; ?>">
-        <?php if (isset($data)) {fieldNotEmpty($data['dt_reclamacao']);}?>
+        <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['dt_reclamacao']);}?>
     </div>
  </div>
     <!--<div class="form-group col-md-2">
@@ -173,37 +175,37 @@ function fieldNotEmpty($field){
 	  <div class="form-group col-md-4">
 		    <label for="email">Tipo da ocorrência</label>
 		    <input type="text" class="form-control" name="tp_ocorrencia" id="tipo_ocorrencia" placeholder="Informe o tipo da ocorrência" value="<?php if (isset($data)) echo $data['tp_ocorrencia']; ?>">
-            <?php if (isset($data)) {fieldNotEmpty($data['tp_ocorrencia']);}?>
+            <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['tp_ocorrencia']);}?>
 	  </div>
 	
   
     <div class="form-group col-md-3">
         <label for="atendente">Atendente</label>
         <input type="text" class="form-control" name="de_atendente" id="atendente" placeholder="Informe o atendente" value="<?php if (isset($data)) echo $data['de_atendente']; ?>">
-        <?php if (isset($data)) {fieldNotEmpty($data['de_atendente']);}?>
+        <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['de_atendente']);}?>
     </div>
     <div class="form-group col-md-3">
         <label for="condominio">Condomínio</label>
         <input type="text" class="form-control" name="de_condominio" id="condominio" placeholder="Informe o condomínio" value="<?php if (isset($data)) echo $data['de_condominio']; ?>">
-        <?php if (isset($data)) {fieldNotEmpty($data['de_condominio']);}?>
+        <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['de_condominio']);}?>
     </div>
      </div>
     <div class="row">
     <div class="form-group col-md-3">
         <label for="cliente">Cliente</label>
         <input type="text" class="form-control" name="de_cliente" id="cliente" placeholder="Informe o nome do cliente" value="<?php if (isset($data)) echo $data['de_cliente']; ?>">
-        <?php if (isset($data)) {fieldNotEmpty($data['de_cliente']);}?>
+        <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['de_cliente']);}?>
     </div>
     
     <div class="form-group col-md-4">
         <label for="email">E-mail do cliente</label>
         <input type="text" class="form-control" name="de_email_cliente" id="email" placeholder="Informe o email do cliente" value="<?php if (isset($data)) echo $data['de_email_cliente']; ?>">
-        <?php if (isset($data)) {fieldNotEmpty($data['de_email_cliente']);}?>
+        <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['de_email_cliente']);}?>
     </div>
     <div class="form-group col-md-3">
         <label for="exampleInputPassword1">Telefone do cliente</label>
         <input type="text" class="form-control" name="nu_telefone" id="telCliente" placeholder="Informe o telefone do cliente" value="<?php if (isset($data)) echo $data['nu_telefone']; ?>">
-        <?php if (isset($data)) {fieldNotEmpty($data['nu_telefone']);}?>
+        <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['nu_telefone']);}?>
     </div>
 </div>
   
@@ -211,17 +213,17 @@ function fieldNotEmpty($field){
     <div class="form-group col-md-4">
         <label for="setor">Setor responsável</label>
         <input type="text" class="form-control" name="de_setor_responsavel" id="setor" placeholder="Informe o setor" value="<?php if (isset($data)) echo $data['de_setor_responsavel']; ?>">
-        <?php if (isset($data)) {fieldNotEmpty($data['de_setor_responsavel']);}?>
+        <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['de_setor_responsavel']);}?>
     </div>
     <div class="form-group col-md-3">
         <label for="data">Data estimada</label>
         <input type="date" class="form-control" name="dt_estimada" id="data" placeholder="Informe uma data estimada" value="<?php if (isset($data)) echo $data['dt_estimada']; ?>">
-        <?php if (isset($data)) {fieldNotEmpty($data['dt_estimada']);}?>
+        <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['dt_estimada']);}?>
     </div>
     <div class="form-group col-md-3">
         <label for="status">Status</label>
         <input type="text" class="form-control" name="st_status" id="status" placeholder="Informe o status" value="<?php if (isset($data)) echo $data['st_status']; ?>">
-        <?php if (isset($data)) {fieldNotEmpty($data['st_status']);}?>
+        <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['st_status']);}?>
     </div>
     </div>
      <div class="row">

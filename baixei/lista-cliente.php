@@ -29,7 +29,7 @@ include_once 'menu.php';?>
 
            ?>
           <td><?php echo $cliente->id; ?></td>
-          <td><?php echo utf8_encode($cliente->de_cliente);?></td>
+          <td><?php echo ($cliente->de_cliente);?></td>
           <td><a href="editar-cliente.php?edit=true&id=<?php echo $cliente->id;?>" class="btn btn-primary">Editar</a>
         <a href="?excluir=true&id=<?php echo $cliente->id;?>" class="btn btn-danger">Excluir</a></td>
         </tr>

@@ -16,19 +16,25 @@
    		$idUsuario = $_SESSION['id'];
 	}
 }*/
+
+//SÓ DEIXAR OS CAMPOS COM VALORES SETADOS SE ACONTECEU ALGUM ERRO, SENÃO LIMPAR OS CAMPOS
 require_once 'Acme/Models/UserModel.php';
-//require_once 'Acme/Classes/validarCampo.php';
+require_once 'Acme/Classes/ValidarCampo.php';
 require_once 'menu.php';
 
  ?>
- 
+
+<?php
+$testaCampo = new ValidarCampo;
+?>
+
 <?php
 $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 if (isset($data['cadastrar'])) {
 	
 	$user = new Acme\Models\UserModel;
 
-	$usuario = "'".$data['nome']."'";
+	$usuario = "'".($data['nome'])."'";
 
 	$userEncontrado = $user->findBy('nome', $usuario);
 
@@ -36,9 +42,13 @@ if (isset($data['cadastrar'])) {
 
 		if (!empty($data['nome']) && isset($data['nome']) && !empty($data['email']) && isset($data['email'])) {
 
+			//echo $data['nome'] = $testaCampo->retiraTags($data['nome']);
+			//echo $data['email']= $testaCampo->retiraTags($data['email']);
+			//echo $data['senha'] = $testaCampo->retiraTags($data['senha']);
+
 			$cadastrado = $user->create(
 				[
-					'nome' => $data['nome'],
+					'nome'  => $data['nome'],
 					'email' => $data['email'],
 					'senha' => $data['senha']
 				]
@@ -53,11 +63,11 @@ if (isset($data['cadastrar'])) {
 		}else{
 			$mensagem = "<h4 id='div-msg'><div class='alert alert-danger' role='alert'><b>Erro:</b> Os campos devem ser preenchidos!</div></h4>";
 		}
+		
 	}else{
 		echo "<h4 id='div-msg'><div class='alert alert-danger' role='alert'><b>Erro:</b> Esse usuário já foi cadastrado!</div></h4>";
-                    
     }
-}    
+ }                
 
 //Verificar que quando tento atualizar sem ter mudado nada mostra a msg de erro
 //Atualizar
@@ -101,13 +111,13 @@ if (isset($_GET['excluir']) && $_GET['excluir'] == true) {
 	}
 }
 
-function fieldNotEmpty($field){
-		if (!empty($field)) {
-			echo $fields = $field;
-		}else{
-			echo '<span style="color: red;">Campo obrigatório!</span>';
-		}
+/*function fieldNotEmpty($field){
+	if (!empty($field)) {
+		echo $fields = $field;
+	}else{
+		echo '<span style="color: red;">Campo obrigatório!</span>';
 	}
+}*/
 
 ?>
 <?php
@@ -116,6 +126,7 @@ function fieldNotEmpty($field){
 	echo (isset($mensagem) ? $mensagem : '');
 
 ?>
+
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="col-md-12">
@@ -128,17 +139,17 @@ function fieldNotEmpty($field){
     	<div class="form-group">
 		    <label for="nome">Nome</label>
 		    <input type="text" class="form-control"  name="nome" id="nome" placeholder="Informe um nome" value="<?php if (isset($data)) echo $data['nome']; ?>" >
-		    <?php if (isset($data)) {fieldNotEmpty($data['nome']);}?>
+		    <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['nome']);}?>
 	  </div>
 	  <div class="form-group">
 		    <label for="email">Email</label>
 		    <input type="email" class="form-control" name="email" id="email" placeholder="Informe um email" value="<?php if (isset($data)) echo $data['email']; ?>">
-		    <?php if (isset($data)) {fieldNotEmpty($data['email']);}?>
+		    <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['email']);}?>
 	  </div>
 	  <div class="form-group">
 		    <label for="senha">Senha</label>
 		    <input type="password" class="form-control" name="senha" id="senha" placeholder="Password">
-		    <?php if (isset($data)) {fieldNotEmpty($data['senha']);}?>
+		    <?php if (isset($data)) {$testaCampo->fieldNotEmpty($data['senha']);}?>
 	  </div>
 	  <button class="btn btn-primary" type="submit"><i class="check green icon"></i>Cadastrar</button>
 	  	<input type="hidden" name="cadastrar">
