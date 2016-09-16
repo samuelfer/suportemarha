@@ -6,6 +6,10 @@ require_once 'Acme/Classes/ValidarCampo.php';
 ?>
 
 <?php
+$testaCampo = new ValidarCampo;
+?>
+
+<?php
 
 $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);   
 if (isset($data['cadastrar'])) {
@@ -16,6 +20,9 @@ if (isset($data['cadastrar'])) {
 
     if (!$clienteEncontrado) {
         if (!empty($data['de_cliente']) && isset($data['de_cliente'])) {
+
+
+            echo $data['de_cliente'] = $testaCampo->retiraTags($data['de_cliente']);
         
             $cadastrado = $cliente->create(
                 [
@@ -49,7 +56,9 @@ if (isset($data['cadastrar'])) {
 //Atualizar
 if (isset($_POST['atualizar'])) {
     $cliente = new Acme\Models\ClienteModel;
-    $atualizado = $suporte->update($_POST['id'],
+    $_POST['de_cliente'] = $testaCampo->retiraTags($_POST['de_cliente']);
+
+    $atualizado = $cliente->update($_POST['id'],
         [
             'de_cliente'  => $_POST['de_cliente']
 
@@ -58,7 +67,7 @@ if (isset($_POST['atualizar'])) {
         $mensagemUpdate = '<h4 id="div-msg" ><div class="alert alert-success" role="alert">
                                <div class="header">Cliente atualizado com sucesso! </div>
                            </div></h4>';
-        //header('Location: /minhas-pastas/gravar/');
+        //header('Location: suportemarha/baixei/lista-cliente.php');
     }else{
         $mensagemUpdate = '<h4 id="div-msg" ><div class="alert alert-danger" role="alert">
                                 <div class="header">Erro ao tentar atualizar! </div>
@@ -78,24 +87,11 @@ if (isset($_GET['excluir']) && $_GET['excluir'] == true) {
     }
 }
 
-/*function fieldNotEmpty($field){
-    if (!empty($field)) {
-        echo $fields = $field;
-    }else{
-        echo '<span style="color: red;">Campo obrigatório!</span>';
-        return;
-    }
-}*/
-
 ?>
 
 <?php
     echo (isset($mensagemUpdate) ? $mensagemUpdate : '');
     echo (isset($mensagem) ? $mensagem : '');
-?>
-
-<?php
-$testaCampo = new ValidarCampo;
 ?>
 
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -131,7 +127,7 @@ $testaCampo = new ValidarCampo;
       </div>
   </div>
 	  	<!--input type="submit" class="btn btn-primary" value="Cadastrar Suporte" name="SendPostForm">-->
-        <button class="btn btn-primary" type="submit"><i class="check green icon"></i>Cadastrar</button>
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
         <input type="hidden" name="cadastrar">
 </form>
   </div>

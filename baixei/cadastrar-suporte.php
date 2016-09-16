@@ -2,8 +2,12 @@
 //require_once "init.php";
 include_once 'menu.php';
 require_once 'Acme/Models/SuporteModel.php';
+require_once 'Acme/Classes/ValidarCampo.php';
 ?>
 
+<?php
+$testaCampo = new ValidarCampo;
+?>
 <?php
 
 $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);   
@@ -119,9 +123,6 @@ if (isset($_GET['excluir']) && $_GET['excluir'] == true) {
 <?php
     echo (isset($mensagemUpdate) ? $mensagemUpdate : '');
     echo (isset($mensagem) ? $mensagem : '');
-?>
-<?php
-$testaCampo = new ValidaCampo;
 ?>
 
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
