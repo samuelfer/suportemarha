@@ -18,8 +18,10 @@
 }*/
 
 //SÓ DEIXAR OS CAMPOS COM VALORES SETADOS SE ACONTECEU ALGUM ERRO, SENÃO LIMPAR OS CAMPOS
-require_once 'Acme/Models/UserModel.php';
-require_once 'Acme/Classes/ValidarCampo.php';
+require_once($_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Models/UserModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Classes/ValidarCampo.php');
+//require_once 'Acme/Models/UserModel.php';
+//require_once 'Acme/Classes/ValidarCampo.php';
 require_once 'menu.php';
 
  ?>

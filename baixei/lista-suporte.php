@@ -1,5 +1,6 @@
 <?php 
-require_once 'Acme/Models/SuporteModel.php';
+require_once($_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Models/SuporteModel.php');
+//require_once 'Acme/Models/SuporteModel.php';
 include_once 'menu.php';?>
 
 <?php
@@ -50,6 +51,7 @@ include_once 'menu.php';?>
          <!-- <td><?php //echo "bolo"; ?></td>
           <!--<td><?php //echo "bolo"; ?></td>-->
           <!--<td><?php //echo "bolo"; ?></td>-->
+          
           <td><a href="editar-suporte.php?edit=true&id=<?php echo $suporte->id;?>" class="btn btn-primary">Editar</a>
         <a href="?excluir=true&id=<?php echo $suporte->id;?>" class="btn btn-danger">Excluir</a></td>
         </tr>

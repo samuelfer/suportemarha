@@ -1,8 +1,10 @@
 <?php 
 //require_once "init.php";
 include_once 'menu.php';
-require_once 'Acme/Models/ClienteModel.php';
-require_once 'Acme/Classes/ValidarCampo.php';
+require_once($_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Models/ClienteModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Classes/ValidarCampo.php');
+//require_once 'Acme/Models/ClienteModel.php';
+//require_once 'Acme/Classes/ValidarCampo.php';
 ?>
 
 <?php

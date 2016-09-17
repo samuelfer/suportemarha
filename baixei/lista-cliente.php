@@ -1,5 +1,6 @@
 <?php 
-require_once 'Acme/Models/ClienteModel.php';
+require_once($_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Models/ClienteModel.php');
+//require_once 'Acme/Models/ClienteModel.php';
 include_once 'menu.php';?>
 
 <?php

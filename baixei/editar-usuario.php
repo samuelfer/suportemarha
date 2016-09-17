@@ -1,6 +1,7 @@
 <?php 
 include_once 'menu.php';
-require_once 'Acme/Models/UserModel.php';
+require_once($_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Models/UserModel.php');
+//require_once 'Acme/Models/UserModel.php';
 ?>
 
 <?php if(isset($_GET['edit']) && $_GET['edit'] == true){?>
