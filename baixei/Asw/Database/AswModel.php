@@ -1,9 +1,9 @@
 <?php
 namespace Asw\Database;
-require_once 'Acme\Interfaces\Imodel.php';
-require_once 'Asw\Database\AttributesCreate.php';
-require_once 'Asw\Database\AttributesUpdate.php';
-require_once 'Asw\Database\Connection.php';
+require_once 'Acme/Interfaces/Imodel.php';
+require_once 'Asw/Database/AttributesCreate.php';
+require_once 'Asw/Database/AttributesUpdate.php';
+require_once 'Asw/Database/Connection.php';
 
 use Acme\Interfaces\Imodel;
 
