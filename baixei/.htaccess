@@ -24,11 +24,11 @@ SetEnvIfNoCase ^User-Agent$ .*(libwww-perl|aesop_com_spiderman) HTTP_SAFE_BADBOT
 Deny from env=HTTP_SAFE_BADBOT
 
 #paginas de erro
-ErrorDocument 400 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
-ErrorDocument 401 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
-ErrorDocument 403 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
-ErrorDocument 404 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
-ErrorDocument 500 http://localhost/minhas-pastas/sist-marha/baixei/sai.php
+ErrorDocument 400 http://localhost/suportemarha/baixei/sai.php
+ErrorDocument 401 http://localhost/suportemarha/baixei/sai.php
+ErrorDocument 403 http://localhost/suportemarha/baixei/sai.php
+ErrorDocument 404 http://localhost/suportemarha/baixei/sai.php
+ErrorDocument 500 http://localhost/suportemarha/baixei/sai.php
 
 Options +FollowSymLinks
 

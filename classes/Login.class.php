@@ -41,7 +41,7 @@ class Login extends Conexao{
     	if (isset($_SESSION['logado'])) {
     		unset($_SESSION['logado']);
 			session_destroy();
-			header("Location: http://localhost/sist-marha/index.php");
+			header("Location: http://localhost/suportemarha/index.php");
 			
     	}
     }

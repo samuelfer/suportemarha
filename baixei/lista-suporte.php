@@ -13,7 +13,7 @@ include_once 'menu.php';?>
       <h1 class="page-header">Suporte</h1>
     </div>
     <div class="col-md-2">
-      <a class="btn btn-primary btn-block" href="cadastrar-user.php">Novo</a>
+      <a class="btn btn-primary btn-sm btn-block" href="cadastrar-user.php">Novo</a>
     </div>
     
     <div class="col-md-12">
@@ -52,8 +52,8 @@ include_once 'menu.php';?>
           <!--<td><?php //echo "bolo"; ?></td>-->
           <!--<td><?php //echo "bolo"; ?></td>-->
           
-          <td><a href="editar-suporte.php?edit=true&id=<?php echo $suporte->id;?>" class="btn btn-primary">Editar</a>
-        <a href="?excluir=true&id=<?php echo $suporte->id;?>" class="btn btn-danger">Excluir</a></td>
+          <td><a href="editar-suporte.php?edit=true&id=<?php echo $suporte->id;?>" class="btn btn-sm btn-primary">Editar</a>
+        <a href="?excluir=true&id=<?php echo $suporte->id;?>" class="btn btn-sm btn-danger">Excluir</a></td>
         </tr>
       <?php endforeach;?>
       </table>

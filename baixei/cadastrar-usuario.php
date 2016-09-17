@@ -41,24 +41,22 @@ if (isset($data['cadastrar'])) {
 	
 	$user = new Acme\Models\UserModel;
 
-	$usuario = "'".($data['nome'])."'";
+	$userEmail = "'".($data['email'])."'";
 
-	$userEncontrado = $user->findBy('nome', $usuario);
+	$userEncontrado = $user->findBy('email', $userEmail);
 
 	if (!$userEncontrado) {
 
 		if (!empty($data['nome']) && isset($data['nome']) && !empty($data['email']) && isset($data['email'])) {
 			echo $data['nome']  = $testaCampo->retiraTags($data['nome']);
-			//echo $data['email'] = $testaCampo->validaEmail($data['email']);
-			//echo $data['senha'] = $testaCampo->retiraTags($data['senha']);
-
+			
 			if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL) === false) {
 			
 				$cadastrado = $user->create(
 					[
-						'nome'  => $data['nome'],
-						'email' => $data['email'],
-						'senha' => $data['senha']
+						'nome'  => strip_tags($data['nome']),
+						'email' => strip_tags(trim($data['email'])),
+						'senha' => sha1($_POST['senha']."pbs#")
 					]
 
 				);
@@ -66,6 +64,7 @@ if (isset($data['cadastrar'])) {
 				if($cadastrado){
 					$mensagem = "<h4 id='div-msg'><div class='alert alert-success' role='alert'><b>Sucesso:</b> O Usuário foi cadastrado no sistema!</div></h4>";
 				}else{
+					
 					$mensagem = "<h4 id='div-msg'><div class='alert alert-danger' role='alert'><b>Erro:</b> Erro ao tentar cadastrar!</div></h4>";
 				}
 			}else{

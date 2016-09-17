@@ -7,7 +7,7 @@ include_once 'menu.php';?>
 
 <?php
   // Limita o número de registros a serem mostrados por página
-  $limite = 10;
+  $limite = 5;
   // Se pg não existe atribui 1 a variável pg
   $pg = (isset($_GET['pg'])) ? (int)$_GET['pg'] : 1;
   // Atribui a variável inicio o inicio de onde os registros vão ser
@@ -24,7 +24,7 @@ include_once 'menu.php';?>
       <h1 class="page-header">Usuários</h1>
     </div>
     <div class="col-md-2">
-      <a class="btn btn-primary btn-block" href="cadastrar-cliente.php">Novo</a>
+      <a class="btn btn-primary  btn-sm btn-block " href="cadastrar-cliente.php">Novo</a>
     </div>
     <div class="col-md-10">
       <table class="table table-striped">
@@ -52,8 +52,8 @@ include_once 'menu.php';?>
           <td><?php echo $usuario->id; ?></td>
           <td><?php echo ($usuario->nome);?></td>
           <td><?php echo ($usuario->email);?></td>
-          <td><a href="editar-usuario.php?edit=true&id=<?php echo $usuario->id;?>" class="btn btn-primary">Editar</a>
-        <a href="?excluir=true&id=<?php echo $usuario->id;?>" class="btn btn-danger">Excluir</a></td>
+          <td><a href="editar-usuario.php?edit=true&id=<?php echo $usuario->id;?>" class="btn btn-primary btn-sm">Editar</a>
+        <a href="?excluir=true&id=<?php echo $usuario->id;?>" class="btn btn-danger btn-sm">Excluir</a></td>
         </tr>
         <?php 
           endforeach; 

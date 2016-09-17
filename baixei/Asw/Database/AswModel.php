@@ -197,7 +197,7 @@ class AswModel implements Imodel{
 	//SELECT PARA VERIFICAR SE É POSSÍVEL LOGAR
 	public function findByIdTeste($name1, $value1, $name2, $value2){
 
-		$query = "SELECT * FROM $this->table WHERE $name1 = $value1 AND $name2 = $value2 AND ativado = '1' LIMIT 1" ;
+		echo $query = "SELECT * FROM $this->table WHERE $name1 = $value1 AND $name2 = $value2 AND status = '1' LIMIT 1" ;
 
 		$pdo = $this->database->prepare($query);
 

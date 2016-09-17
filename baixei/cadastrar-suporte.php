@@ -247,7 +247,7 @@ if (isset($_GET['excluir']) && $_GET['excluir'] == true) {
     </div>
     </div>
 	  	<!--input type="submit" class="btn btn-primary" value="Cadastrar Suporte" name="SendPostForm">-->
-        <button class="btn btn-primary" type="submit"><i class="check green icon"></i>Cadastrar</button>
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
         <input type="hidden" name="cadastrar">
 </form>
   </div>

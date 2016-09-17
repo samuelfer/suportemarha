@@ -1,4 +1,25 @@
+<?php 
 
+  if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+   
+  
+  if($_SESSION['logado'] != '1'){
+    session_destroy();
+    unset($_SESSION['id']);
+    unset($_SESSION['nome']);
+    unset($_SESSION['email']);
+    unset($_SESSION['nivel']);
+    unset($_SESSION['logado']);
+      
+      header("Location: login.php"); 
+      exit();
+  } else {
+      $idUsuario = $_SESSION['id'];
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -30,10 +51,10 @@
     <script type="text/javascript">
     $(document).ready(function(){
 
-      $('h4').css("color", "#f66");
+      /*$('h4').css("color", "#f66");*/
       /*$('h1').hide();*/
       $('h4').delay('2000');
-      $('h4').css("color", "#f66");
+      /*$('h4').css("color", "#f66");*/
       $('h4').fadeOut("slow");
     })
 
@@ -73,12 +94,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Configuração</a></li>
+            <li><a href="#">Bem vindo - <?php  echo $_SESSION['nome']."! - "; ?> <span><?php echo date('d-m-Y'); ?></span></a></li>
           </ul>
-          <form class="navbar-form navbar-right">
+          <!--<form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
-          </form>
+          </form>-->
         </div>
       </div>
     </nav>
@@ -94,6 +117,7 @@
             <li><a href="lista-suporte.php">Listar Suporte</a></li>
             <li><a href="cadastrar-cliente.php">Cadastrar Cliente</a></li>
             <li><a href="lista-cliente.php">Listar Cliente</a></li>
+            <li><a href="logout.php">Sair do Sistema</a></li>
           </ul>
         </div>
         

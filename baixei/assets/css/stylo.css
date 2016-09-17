@@ -9,3 +9,8 @@
 .navbar-inverse .navbar-nav>li>a {
     color: antiquewhite;
 }
+/*TELA DE LOGIN*/
+.panel-info> .panel-heading{
+	color: #fff;
+	background-color: #428bca;
+}
