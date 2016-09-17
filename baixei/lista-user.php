@@ -93,8 +93,20 @@ include_once 'menu.php';?>
             </li>
             <?php
             if($qtdPag > 1 && $pg <= $qtdPag){
-              for($i = 1; $i <= $qtdPag; $i++){
-                if($i == $pg){
+              //for($i = 1; $i <= $qtdPag; $i++){
+              if ($pg > 1) {
+                $pgMenor = $pg-1;
+              } else {
+                $pgMenor = $pg;
+              }
+              if ($pg < $qtdPag) {
+                $pgMaior = $pg+1;
+              } else {
+                $pgMaior = $pg;
+              }
+              
+              for($i = $pgMenor ; $i <= $pgMaior; $i++){
+                if($i == $pg){ //Desenha o item selecionado
                   ?> <li class="active"><a href="#"><?php echo $i; ?></a></li> <?php
                 } else {
                   ?> <li><a href="lista-user.php?pg=<?php echo $i; ?>"><?php echo $i; ?></a></li> <?php
