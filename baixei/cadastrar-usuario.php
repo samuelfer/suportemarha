@@ -16,9 +16,14 @@
    		$idUsuario = $_SESSION['id'];
 	}
 }*/
+// echo $_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Models/UserModel.php';
+// ini_set('display_errors',1);
+// ini_set('display_startup_erros',1);
+// error_reporting(E_ALL);
 
 //SÓ DEIXAR OS CAMPOS COM VALORES SETADOS SE ACONTECEU ALGUM ERRO, SENÃO LIMPAR OS CAMPOS
 require_once($_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Models/UserModel.php');
+
 require_once($_SERVER['DOCUMENT_ROOT'].'/suportemarha/baixei/Acme/Classes/ValidarCampo.php');
 //require_once 'Acme/Models/UserModel.php';
 //require_once 'Acme/Classes/ValidarCampo.php';

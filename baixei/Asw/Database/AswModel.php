@@ -65,6 +65,41 @@ class AswModel implements Imodel{
 		}
 	}
 
+	//Read com limit para a paginacao
+	public function readPagination($inicio, $limite){
+
+		$query = "SELECT * FROM $this->table LIMIT $inicio, $limite";
+
+		$pdo = $this->database->prepare($query);
+
+		try{
+
+			$pdo->execute();
+			return $pdo->fetchAll();
+
+		}catch(PDOException $e){
+
+			echo ($e->getMessage());
+		}
+	}
+
+	public function countRecords(){
+
+		$query = "SELECT count(*) as total FROM $this->table";
+
+		$pdo = $this->database->prepare($query);
+
+		try{
+
+			$pdo->execute();
+			return $pdo->fetchAll();
+
+		}catch(PDOException $e){
+
+			echo ($e->getMessage());
+		}
+	}
+
 	public function update($id, $attributes){
 		$AttributesUpdate = new AttributesUpdate;
 
